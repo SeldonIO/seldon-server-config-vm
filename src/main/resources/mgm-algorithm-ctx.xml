@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+
+    <util:map key-type="java.lang.String" value-type="java.lang.Integer" id="serviceNameToType">
+        <entry key="MGM" value="1"/>
+    </util:map>
+
+    <util:list id="defaultOnlineAlgs">
+        <ref bean="onlineCloseFriendsByCentrality"/>
+        <ref bean="onlineFriendsByRandom"/>
+    </util:list>
+
+    <util:list id="defaultOfflineAlgs">
+    </util:list>
+
+
+    <util:list id="defaultInclusiveFilters">
+    </util:list>
+
+
+    <util:list id="defaultExclusiveFilters">
+    </util:list>
+
+
+    <bean id="defaultBlender" class="io.seldon.facebook.NormalisingScoreBlender"/>
+
+
+    <bean id="defaultStrategy" class="io.seldon.facebook.SocialRecommendationStrategy">
+        <property name="onlineAlgorithms" ref="defaultOnlineAlgs"/>
+        <property name="offlineAlgorithms" ref="defaultOfflineAlgs"/>
+        <property name="inclusiveFilters" ref="defaultInclusiveFilters"/>
+        <property name="exclusiveFilters" ref="defaultExclusiveFilters"/>
+        <property name="blender" ref="defaultBlender"/>
+        <property name="aim" value="SHARE_PAGES"/>
+    </bean>
+    
+      <util:list id="keywordAlg">
+
+    </util:list>
+    
+    
+     <bean id="keywordStrategy" class="io.seldon.facebook.SocialRecommendationStrategy">
+
+    </bean>
+
+    <util:map id="clientToStrategy" map-class="java.util.concurrent.ConcurrentHashMap">
+        <entry key="default" value-ref="defaultStrategy"/>
+        <entry key="rummblelivetest" value-ref="defaultStrategy"/>
+        <entry key="winepassitaly" value-ref="defaultStrategy"/>
+        <entry key="puntofisso" value-ref="defaultStrategy"/>
+        <entry key="jonngalea" value-ref="defaultStrategy"/>
+        <entry key="cookapp" value-ref="defaultStrategy"/>
+        <entry key="zero" value-ref="defaultStrategy"/>
+        <entry key="spacenab" value-ref="defaultStrategy"/>
+        <entry key="puntofisso" value-ref="defaultStrategy"/>
+        <entry key="peerby" value-ref="defaultStrategy"/>
+        <entry key="universalpictures" value-ref="defaultStrategy"/>
+        <entry key="tanktop" value-ref="defaultStrategy"/>
+        <entry key="polkadot" value-ref="defaultStrategy"/>
+        <entry key="lineup" value-ref="defaultStrategy"/>
+        <entry key="checkbonus" value-ref="defaultStrategy"/>
+        <entry key="foundbite" value-ref="defaultStrategy"/>
+        <entry key="stylect" value-ref="defaultStrategy"/>
+        <entry key="renbooks" value-ref="defaultStrategy"/>
+        <entry key="giftter" value-ref="defaultStrategy"/>
+        <entry key="twosocks" value-ref="defaultStrategy"/>
+        <entry key="urbantimes" value-ref="defaultStrategy"/>
+        <entry key="quickblox" value-ref="defaultStrategy"/>
+        <entry key="tasterlab_new" value-ref="defaultStrategy"/>
+        <entry key="glipho" value-ref="defaultStrategy"/>
+        <entry key="lampone_al_cioccolato" value-ref="defaultStrategy"/>
+        <entry key="def_test" value-ref="defaultStrategy"/>
+        <entry key="rated_people" value-ref="defaultStrategy"/>
+        <entry key="rockol_com" value-ref="defaultStrategy"/>
+        <entry key="spits" value-ref="defaultStrategy"/>
+        <entry key="bubble_shot" value-ref="defaultStrategy"/>
+        <entry key="etoro" value-ref="defaultStrategy"/>
+        <entry key="lastminute" value-ref="defaultStrategy"/>
+        <entry key="carroonline" value-ref="defaultStrategy"/>
+        <entry key="5pm" value-ref="defaultStrategy"/>
+        <entry key="quidco" value-ref="defaultStrategy"/>
+        <entry key="festicket" value-ref="defaultStrategy"/>
+        <entry key="donnamoderna" value-ref="defaultStrategy"/>
+        <entry key="tasterlab" value-ref="defaultStrategy"/>
+        <entry key="luzypaz" value-ref="defaultStrategy"/>
+        <entry key="acuista_com" value-ref="defaultStrategy"/>
+        <entry key="fluidfootball" value-ref="defaultStrategy"/>
+        <entry key="akamon1" value-ref="defaultStrategy"/>
+        <entry key="8_ball" value-ref="defaultStrategy"/>
+        <entry key="bubble_shot2" value-ref="defaultStrategy"/>
+        <entry key="audiosnaps" value-ref="defaultStrategy"/>
+        <entry key="nutmeg" value-ref="defaultStrategy"/>
+    </util:map>
+
+</beans>

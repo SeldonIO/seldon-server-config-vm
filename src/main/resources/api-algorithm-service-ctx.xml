@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define additional algorithms as follows -->
+
+     <bean id="algorithm.cfAlgorithm.movielens" parent="abstract.algorithm.cfAlgorithm">
+       <property name="recommenders">
+             <list>
+                <value>MATRIX_FACTOR</value>
+                <value>RECENT_MATRIX_FACTOR</value>                
+                <value>RECENT_SIMILAR_ITEMS</value>                                                
+                <value>SEMANTIC_VECTORS</value>                                
+                <value>RECENT_ITEMS</value>
+            </list>
+        </property>
+        <property name="recommenderStrategy" value="FIRST_SUCCESSFUL"/>
+        <property name="longTermWeight" value="1.0"/>
+        <property name="shortTermWeight" value="0.5"/>
+        <property name="removeIgnoredRecommendations" value="false"/>
+        <property name="recommendationDiversity" value="1.0"/>
+        <property name="recommendationCachingTimeSecs" value="0"/>
+        <property name="numRecentItems" value="10681"/>        
+        <property name="numRecentActions" value="20"/>                
+        <property name="tagTable" value="text"/>                
+        <property name="tagAttrId" value="20"/>                        
+        <property name="minNumTagsForTopicWeights" value="5"/> 
+        <property name="IgnorePerfectSVMatches" value="false"/> 
+    </bean>
+
+    <bean id="algorithm.service" class="io.seldon.api.AlgorithmServiceImpl">
+        <property name="algorithmMap">
+            <map>
+				<entry key="movielens" value-ref="algorithm.cfAlgorithm.movielens"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>
